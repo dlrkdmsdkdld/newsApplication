@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/topNewsFragment">
+
+    <fragment
+        android:id="@+id/topNewsFragment"
+        android:name="kr.ac.kpu.ce2017154024.newsappwithwanted.fragment.TopNewsFragment"
+        android:label="fragment_top_news"
+        tools:layout="@layout/fragment_top_news" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="kr.ac.kpu.ce2017154024.newsappwithwanted.fragment.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="kr.ac.kpu.ce2017154024.newsappwithwanted.fragment.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/fragment_saved" />
+</navigation>
