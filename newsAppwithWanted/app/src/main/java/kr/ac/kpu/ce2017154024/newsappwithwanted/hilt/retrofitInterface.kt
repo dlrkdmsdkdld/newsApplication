@@ -11,8 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface retrofitInterface {
-
-    @GET("top-headlines?country=kr")
+//kr
+    @GET("top-headlines?country=us")
     fun requestTopHeadline(): Call<Articles>
 
     companion object {

@@ -9,7 +9,11 @@
         android:id="@+id/topNewsFragment"
         android:name="kr.ac.kpu.ce2017154024.newsappwithwanted.fragment.TopNewsFragment"
         android:label="fragment_top_news"
-        tools:layout="@layout/fragment_top_news" />
+        tools:layout="@layout/fragment_top_news" >
+        <action
+            android:id="@+id/action_topNewsFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="kr.ac.kpu.ce2017154024.newsappwithwanted.fragment.CategoriesFragment"
@@ -20,4 +24,9 @@
         android:name="kr.ac.kpu.ce2017154024.newsappwithwanted.fragment.SavedFragment"
         android:label="fragment_saved"
         tools:layout="@layout/fragment_saved" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="kr.ac.kpu.ce2017154024.newsappwithwanted.fragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

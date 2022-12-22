@@ -6,16 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kr.ac.kpu.ce2017154024.newsappwithwanted.R
+import kr.ac.kpu.ce2017154024.newsappwithwanted.databinding.FragmentCategoriesBinding
 
 class CategoriesFragment : Fragment() {
 
-
+    private lateinit var binding: FragmentCategoriesBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_categories, container, false)
+        binding=FragmentCategoriesBinding.inflate(inflater,container,false)
+        (activity as m)
+        return binding.root
     }
 
 

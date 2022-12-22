@@ -21,6 +21,13 @@ class TopNewsViewmodel @Inject constructor(private val repository: TopNewsReposi
     fun setarticles(data:List<Article>?){
         data?.let {  articles.value =it}
     }
+    private val selectarticle = MutableLiveData<Article>()
+    val getselectarticle : LiveData<Article>
+        get() = selectarticle
+    fun setselectarticle(data:Article?){
+        data?.let {  selectarticle.value =it}
+    }
+
     init {
         viewModelScope.launch {
              repository.gettag()?.let {

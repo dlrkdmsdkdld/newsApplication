@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/dlrkd/AndroidStudioProjects/newsAppwithWanted/app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/dlrkd/AndroidStudioProjects/newsAppwithWanted/app/src/main/res/layout/fragment_categories.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/dlrkd/AndroidStudioProjects/newsAppwithWanted/app/src/main/res/layout/fragment_detail.xml" value="0.225" />
         <entry key="..\:/Users/dlrkd/AndroidStudioProjects/newsAppwithWanted/app/src/main/res/layout/fragment_saved.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/dlrkd/AndroidStudioProjects/newsAppwithWanted/app/src/main/res/layout/fragment_top_news.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/dlrkd/AndroidStudioProjects/newsAppwithWanted/app/src/main/res/layout/item_topheadline.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/dlrkd/AndroidStudioProjects/newsAppwithWanted/app/src/main/res/menu/bottom_menu.xml" value="0.5" />
       </map>
     </option>
