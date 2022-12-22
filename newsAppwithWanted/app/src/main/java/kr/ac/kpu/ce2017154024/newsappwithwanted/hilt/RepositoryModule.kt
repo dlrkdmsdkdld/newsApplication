@@ -1,11 +1,10 @@
-package kr.ac.kpu.ce2017154024.newsappwithwanted.repository
+package kr.ac.kpu.ce2017154024.newsappwithwanted.hilt
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
+import kr.ac.kpu.ce2017154024.newsappwithwanted.repository.TopNewsRepository
 import javax.inject.Singleton
 
 
@@ -15,8 +14,8 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideTopNewsRepository():TopNewsRepository{
-        return TopNewsRepository()
+    fun provideTopNewsRepository(apimodule: retrofitInterface): TopNewsRepository {
+        return TopNewsRepository(apimodule)
     }
 
 

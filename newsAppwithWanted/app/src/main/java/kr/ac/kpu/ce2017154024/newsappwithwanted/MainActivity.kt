@@ -2,10 +2,13 @@ package kr.ac.kpu.ce2017154024.newsappwithwanted
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kpu.ce2017154024.newsappwithwanted.databinding.ActivityMainBinding
+import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
@@ -18,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         //바텀네비게이션뷰와 네비게이션을 묶어준다
         NavigationUI.setupWithNavController(mainBinding.mainBottom , navController)
-
+        Log.d(TAG,"메인 액티비티 생성")
 
 
     }
