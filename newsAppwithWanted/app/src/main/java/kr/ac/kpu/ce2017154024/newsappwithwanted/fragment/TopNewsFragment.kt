@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kpu.ce2017154024.newsappwithwanted.Article
+import kr.ac.kpu.ce2017154024.newsappwithwanted.MainActivity
 import kr.ac.kpu.ce2017154024.newsappwithwanted.R
 import kr.ac.kpu.ce2017154024.newsappwithwanted.databinding.FragmentTopNewsBinding
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
@@ -42,6 +43,8 @@ class TopNewsFragment : Fragment(),ITopRecyclerView {
 
             }
         })
+
+
         return topNewsBinding.root
 
     }

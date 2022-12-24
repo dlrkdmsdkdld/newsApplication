@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kr.ac.kpu.ce2017154024.newsappwithwanted.MainActivity
 import kr.ac.kpu.ce2017154024.newsappwithwanted.R
 import kr.ac.kpu.ce2017154024.newsappwithwanted.databinding.FragmentCategoriesBinding
 
@@ -16,7 +17,9 @@ class CategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding=FragmentCategoriesBinding.inflate(inflater,container,false)
-        (activity as m)
+        val actionbar = (activity as MainActivity).supportActionBar
+        actionbar?.title = "NewsApp"
+
         return binding.root
     }
 
