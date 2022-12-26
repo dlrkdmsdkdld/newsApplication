@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
-import kr.ac.kpu.ce2017154024.newsappwithwanted.Article
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
 import kr.ac.kpu.ce2017154024.newsappwithwanted.repository.TopNewsRepository
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import javax.inject.Inject
@@ -24,7 +24,7 @@ class TopNewsViewmodel @Inject constructor(private val repository: TopNewsReposi
     private val selectarticle = MutableLiveData<Article>()
     val getselectarticle : LiveData<Article>
         get() = selectarticle
-    fun setselectarticle(data:Article?){
+    fun setselectarticle(data: Article?){
         data?.let {  selectarticle.value =it}
     }
 

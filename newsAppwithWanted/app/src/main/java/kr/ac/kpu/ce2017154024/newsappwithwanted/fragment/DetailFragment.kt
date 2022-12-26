@@ -1,23 +1,17 @@
 package kr.ac.kpu.ce2017154024.newsappwithwanted.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.core.view.MenuProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fragment_detail.view.*
-import kr.ac.kpu.ce2017154024.newsappwithwanted.Article
-import kr.ac.kpu.ce2017154024.newsappwithwanted.MainActivity
-import kr.ac.kpu.ce2017154024.newsappwithwanted.R
-import kr.ac.kpu.ce2017154024.newsappwithwanted.data
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.HeaderType
 import kr.ac.kpu.ce2017154024.newsappwithwanted.databinding.FragmentDetailBinding
-import kr.ac.kpu.ce2017154024.newsappwithwanted.databinding.FragmentTopNewsBinding
-import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import java.text.SimpleDateFormat
 
 
-class DetailFragment : Fragment(){
+class DetailFragment : Fragment(),View.OnClickListener{
     private lateinit var binding: FragmentDetailBinding
     private lateinit var article: Article
     override fun onCreateView(
@@ -26,7 +20,8 @@ class DetailFragment : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDetailBinding.inflate(inflater,container,false)
-
+        binding.fragmentTopHeader.type=HeaderType.extend
+        binding.fragmentTopHeader.headerExtendBack.setOnClickListener(this)
         article = arguments?.getSerializable("data") as Article
         initView(article)
 
@@ -44,43 +39,19 @@ class DetailFragment : Fragment(){
             val formatter = SimpleDateFormat("HH")
             val parseData=formatter.format(tmp).toInt()
             detailTime.text = "${parseData - hour} hours ago"
+            fragmentTopHeader.headerExtendTitle.text = data.title
 
         }
-        val actionbar = (activity as MainActivity).supportActionBar
-        actionbar?.title = data.title
-        actionbar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        //super.onOptionsItemSelected(item)
-        when(item.itemId){
-            android.R.id.home ->{
-                Log.d(TAG, " 클릭됨")
+    override fun onClick(p0: View?) {
+        when(p0){
+            binding.fragmentTopHeader.headerExtendBack ->{
+                findNavController().popBackStack()
             }
         }
-        val actionbar = (activity as MainActivity).supportActionBar
-        actionbar?.setDisplayHomeAsUpEnabled(false)
-        actionbar?.setHomeButtonEnabled(false)
-        (activity as MainActivity).onBackPressed()
-        Log.d(TAG, " 클릭됨")
-        return true
-//        when(item.itemId){
-//
-//            android.R.id.home->{
-//                val actionbar = (activity as MainActivity).supportActionBar
-//                actionbar?.setDisplayHomeAsUpEnabled(false)
-//                actionbar?.setHomeButtonEnabled(false)
-//                (activity as MainActivity).onBackPressed()
-//                Log.d(TAG, " 클릭됨")
-//                return true
-//
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
     }
-
-
-
 
 
 }

@@ -10,11 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import kr.ac.kpu.ce2017154024.newsappwithwanted.Article
-import kr.ac.kpu.ce2017154024.newsappwithwanted.MainActivity
 import kr.ac.kpu.ce2017154024.newsappwithwanted.R
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.HeaderType
 import kr.ac.kpu.ce2017154024.newsappwithwanted.databinding.FragmentTopNewsBinding
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import kr.ac.kpu.ce2017154024.newsappwithwanted.view.ITopRecyclerView
@@ -32,6 +31,9 @@ class TopNewsFragment : Fragment(),ITopRecyclerView {
     ): View? {
         // Inflate the layout for this fragment
         topNewsBinding = FragmentTopNewsBinding.inflate(inflater,container,false)
+
+        //topNewsBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_top_news,container,false)
+        topNewsBinding.fragmentTopHeader.type = HeaderType.basic
         topNewsViewmodel.getarticles.observe(viewLifecycleOwner, Observer {
             it.forEach {
                 Log.d(TAG,"기사 : $it")
@@ -51,11 +53,14 @@ class TopNewsFragment : Fragment(),ITopRecyclerView {
 
     override fun onSearchItemClicked(data: Article) {
         Log.d(TAG,"data = $data")
-        topNewsViewmodel.setselectarticle(data)
-        var bundle = Bundle()
-        bundle.putSerializable("data",data)
-        findNavController().navigate(R.id.action_topNewsFragment_to_detailFragment,bundle)
-    }
+        Log.d(TAG,"데이터있음")
+        var postbundle = Bundle()
+        
+        postbundle.putSerializable("data",data)
+        findNavController().navigate(R.id.action_topNewsFragment_to_detailFragment,postbundle)
+
+
+     }
 
 
 }

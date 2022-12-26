@@ -1,7 +1,6 @@
 package kr.ac.kpu.ce2017154024.newsappwithwanted.hilt
 
-import com.google.gson.JsonElement
-import kr.ac.kpu.ce2017154024.newsappwithwanted.Articles
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Articles
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

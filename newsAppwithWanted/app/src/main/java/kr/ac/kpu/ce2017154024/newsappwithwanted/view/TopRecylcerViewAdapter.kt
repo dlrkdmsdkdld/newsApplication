@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_topheadline.view.*
-import kr.ac.kpu.ce2017154024.newsappwithwanted.Article
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
 import kr.ac.kpu.ce2017154024.newsappwithwanted.R
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import java.text.SimpleDateFormat
 
-class TopRecylcerViewAdapter(data:List<Article>,RecylcerInterface: ITopRecyclerView) : RecyclerView.Adapter<TopRecyclerViewHolder>() {
+class TopRecylcerViewAdapter(data:List<Article>, RecylcerInterface: ITopRecyclerView) : RecyclerView.Adapter<TopRecyclerViewHolder>() {
     val data= data
     private val RecylcerInterface = RecylcerInterface
 
@@ -58,6 +58,7 @@ class TopRecyclerViewHolder(itemView: View,RecylcerInterface :ITopRecyclerView) 
     override fun onClick(p0: View?) {
         when(p0){
             layout ->{
+                Log.d(TAG,"현재 선택한  기사 : $article")
                 this.RecylcerInterface.onSearchItemClicked(this.article)
             }
         }

@@ -2,18 +2,13 @@ package kr.ac.kpu.ce2017154024.newsappwithwanted.repository
 
 import android.util.Log
 import kotlinx.coroutines.*
-import kr.ac.kpu.ce2017154024.newsappwithwanted.Article
-import kr.ac.kpu.ce2017154024.newsappwithwanted.Articles
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Articles
 import kr.ac.kpu.ce2017154024.newsappwithwanted.hilt.retrofitInterface
-import kr.ac.kpu.ce2017154024.newsappwithwanted.util
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.await
-import retrofit2.awaitResponse
-import retrofit2.http.GET
 import javax.inject.Inject
-import javax.security.auth.callback.Callback
 
 class TopNewsRepository @Inject constructor(private val apimodule: retrofitInterface) {
     suspend fun gettag(): List<Article>? {
