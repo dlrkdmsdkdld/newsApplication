@@ -34,4 +34,22 @@ class TopNewsRepository @Inject constructor(private val apimodule: retrofitInter
         return res.await()
         //return null
     }
+    suspend fun getCategoryAriticle(category:String):List<Article>?{
+        val res = CompletableDeferred<List<Article>?>()
+        apimodule.requestTopHeadlineCategory(category).enqueue(object :retrofit2.Callback<Articles>{
+            override fun onFailure(call: Call<Articles>, t: Throwable) {
+                Log.d(TAG,"실패")
+                res.complete(null)
+            }
+            override fun onResponse(call: Call<Articles>, response: Response<Articles>) {
+                response.body()?.let {
+                    Log.d(TAG,"it - > ${it.articles}")
+                    res.complete(it.articles)
+                    Log.d(TAG,"성공")
+
+                }
+            }
+        })
+        return res.await()
+    }
 }

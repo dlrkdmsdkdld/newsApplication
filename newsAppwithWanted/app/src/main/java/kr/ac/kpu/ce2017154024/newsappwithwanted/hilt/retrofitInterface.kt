@@ -8,11 +8,15 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface retrofitInterface {
 //kr
     @GET("top-headlines?country=us")
     fun requestTopHeadline(): Call<Articles>
+    @GET("top-headlines?country=us")
+    fun requestTopHeadlineCategory(@Query("category") category:String): Call<Articles>
 
     companion object {
             private const val BASE_URL =

@@ -39,7 +39,12 @@ class DetailFragment : Fragment(),View.OnClickListener{
             val formatter = SimpleDateFormat("HH")
             val parseData=formatter.format(tmp).toInt()
             detailTime.text = "${parseData - hour} hours ago"
-            fragmentTopHeader.headerExtendTitle.text = data.title
+
+            if (data.title.length>35){
+                val tmp ="${data.title.substring(0,35)}..."
+                fragmentTopHeader.headerExtendTitle.text=tmp
+            }
+            else fragmentTopHeader.headerExtendTitle.text = data.title
 
         }
 
