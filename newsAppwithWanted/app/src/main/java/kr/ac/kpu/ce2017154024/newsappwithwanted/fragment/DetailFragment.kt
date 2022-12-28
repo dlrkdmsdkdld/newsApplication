@@ -27,6 +27,7 @@ class DetailFragment : Fragment(),View.OnClickListener{
     private lateinit var binding: FragmentDetailBinding
     private lateinit var article: Article
     private val myviewmodel: DetailViewmodel by viewModels()
+    private var check:Boolean =false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,7 +69,7 @@ class DetailFragment : Fragment(),View.OnClickListener{
     }
     private fun checkStar(title:String){
         CoroutineScope(Dispatchers.Main).launch {
-            val check = myviewmodel.check(title)
+            check = myviewmodel.check(title)
             if (check) binding.detailStar.setBackgroundResource(R.drawable.ic_baseline_star_24)
             else binding.detailStar.setBackgroundResource(R.drawable.ic_baseline_star_outline_24)
         }
@@ -80,8 +81,15 @@ class DetailFragment : Fragment(),View.OnClickListener{
                 findNavController().popBackStack()
             }
             binding.detailStar ->{
-                binding.detailStar.setBackgroundResource(R.drawable.ic_baseline_star_24)
-                myviewmodel.insert(article)
+                if (check){
+                    myviewmodel.delete(article)
+                    binding.detailStar.setBackgroundResource(R.drawable.ic_baseline_star_outline_24)
+                    check=false
+                }else{
+                    myviewmodel.insert(article)
+                    binding.detailStar.setBackgroundResource(R.drawable.ic_baseline_star_24)
+                    check=true
+                }
             }
         }
     }

@@ -40,5 +40,17 @@ class DetailViewmodel @Inject constructor(private val repository: RoomRepository
         }
         return result.await()
     }
+    fun delete(data: Article){
+        CoroutineScope(Dispatchers.IO).launch {
+            val tmp = DBArticle(
+                title = data.title,
+                urlToImage = data.urlToImage,
+                publishedAt = data.publishedAt.substring(0, 10),
+                author = data.author,
+                content = data.content
+            )
+            repository.deleteArticle(tmp)
+        }
+    }
 
 }
