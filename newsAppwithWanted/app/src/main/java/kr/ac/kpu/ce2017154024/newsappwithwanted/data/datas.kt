@@ -7,7 +7,9 @@ import java.io.Serializable
 class Articles(val articles:List<Article>){
 
 }
-data class Article(val urlToImage:String, val title:String, val publishedAt:String, val source: Source, val author:String?="", val content:String):Serializable{
+data class Article(val urlToImage:String, val title:String,
+                   val publishedAt:String, val source: Source,
+                   val author:String?="", val content:String):Serializable{
 
 }
 data class Source(val name:String?="",val id:String?="")
