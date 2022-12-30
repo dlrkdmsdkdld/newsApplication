@@ -38,7 +38,7 @@ class TopNewsFragment : Fragment(),ITopRecyclerView {
             it.forEach {
                 Log.d(TAG,"기사 : $it")
             }
-            topnewsRecylcerViewAdapter=TopRecylcerViewAdapter(it,this)
+            topnewsRecylcerViewAdapter=TopRecylcerViewAdapter(it,this,false)
             topNewsBinding.fragmentTopRecylcer.apply {
                 adapter=topnewsRecylcerViewAdapter
                 layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)

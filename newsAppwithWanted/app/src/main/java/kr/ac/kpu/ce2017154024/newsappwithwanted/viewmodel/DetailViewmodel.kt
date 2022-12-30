@@ -52,5 +52,13 @@ class DetailViewmodel @Inject constructor(private val repository: RoomRepository
             repository.deleteArticle(tmp)
         }
     }
+    suspend fun getArticles():List<DBArticle>{
+        val result = CompletableDeferred<List<DBArticle>>()
+        CoroutineScope(Dispatchers.IO).launch {
+            val tmp = repository.getArticles()
+            result.complete(tmp)
+        }
+        return result.await()
+    }
 
 }

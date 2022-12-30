@@ -12,8 +12,9 @@ import kr.ac.kpu.ce2017154024.newsappwithwanted.R
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import java.text.SimpleDateFormat
 
-class TopRecylcerViewAdapter(data:List<Article>, RecylcerInterface: ITopRecyclerView) : RecyclerView.Adapter<TopRecyclerViewHolder>() {
+class TopRecylcerViewAdapter(data:List<Article>, RecylcerInterface: ITopRecyclerView,isdb:Boolean) : RecyclerView.Adapter<TopRecyclerViewHolder>() {
     val data= data
+    val isdb=isdb
     private val RecylcerInterface = RecylcerInterface
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopRecyclerViewHolder {
@@ -22,7 +23,7 @@ class TopRecylcerViewAdapter(data:List<Article>, RecylcerInterface: ITopRecycler
     }
 
     override fun onBindViewHolder(holder: TopRecyclerViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position],this.isdb)
     }
 
     override fun getItemCount(): Int {
@@ -40,17 +41,22 @@ class TopRecyclerViewHolder(itemView: View,RecylcerInterface :ITopRecyclerView) 
     init {
         layout.setOnClickListener(this)
     }
-    fun bind(data : Article){
+    fun bind(data : Article,isdb: Boolean){
         title.text=data.title
         //author.text = data.source.name
         author.text=data.author
         this.article=data
         //author.text=data.content
-        val hour = data.publishedAt.substring(11 until 13).toInt()
-        val tmp = System.currentTimeMillis()
-        val formatter = SimpleDateFormat("HH")
-        val parseData=formatter.format(tmp).toInt()
-        time.text = "${parseData - hour} hours ago"
+        if (isdb){
+            time.text=data.publishedAt
+        }else{
+            val hour = data.publishedAt.substring(11 until 13).toInt()
+            val tmp = System.currentTimeMillis()
+            val formatter = SimpleDateFormat("HH")
+            val parseData=formatter.format(tmp).toInt()
+            time.text = "${parseData - hour} hours ago"
+        }
+
 
         Glide.with(itemView).load(data.urlToImage).centerCrop().into(imageView)
     }

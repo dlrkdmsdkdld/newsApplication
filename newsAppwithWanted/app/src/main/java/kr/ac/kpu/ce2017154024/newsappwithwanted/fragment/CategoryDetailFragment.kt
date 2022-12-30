@@ -38,7 +38,7 @@ class CategoryDetailFragment : Fragment(),View.OnClickListener, ITopRecyclerView
         category?.let{      initview(it) }
         Log.d(TAG,"cat = $category")
         myViewmodel.getarticles.observe(viewLifecycleOwner, Observer {
-            RecylcerViewAdapter=TopRecylcerViewAdapter(it,this)
+            RecylcerViewAdapter=TopRecylcerViewAdapter(it,this,false)
             categoryDetailBinding.fragmentTopRecylcer.apply {
                 adapter=RecylcerViewAdapter
                 layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
