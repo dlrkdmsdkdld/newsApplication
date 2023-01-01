@@ -71,6 +71,7 @@ class SavedFragment : Fragment(), ITopRecyclerView {
     override fun onSearchItemClicked(data: Article) {
         var postbundle = Bundle()
         postbundle.putSerializable("data",data)
+        postbundle.putBoolean("save",true)
         findNavController().navigate(R.id.action_savedFragment_to_detailFragment,postbundle)
 
     }

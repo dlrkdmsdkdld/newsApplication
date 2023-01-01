@@ -57,6 +57,7 @@ class TopNewsFragment : Fragment(),ITopRecyclerView {
         var postbundle = Bundle()
         
         postbundle.putSerializable("data",data)
+        postbundle.putBoolean("save",false)
         findNavController().navigate(R.id.action_topNewsFragment_to_detailFragment,postbundle)
 
 

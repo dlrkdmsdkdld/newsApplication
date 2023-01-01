@@ -63,6 +63,7 @@ class CategoryDetailFragment : Fragment(),View.OnClickListener, ITopRecyclerView
         var postbundle = Bundle()
         postbundle.putSerializable("data",data)
         Log.d(TAG,"선택 : $data")
+        postbundle.putBoolean("save",false)
         findNavController().navigate(R.id.action_categoryDetailFragment_to_detailFragment,postbundle)
 
     }

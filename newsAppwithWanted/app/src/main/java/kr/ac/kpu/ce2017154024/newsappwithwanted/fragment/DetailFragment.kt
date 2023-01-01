@@ -38,22 +38,30 @@ class DetailFragment : Fragment(),View.OnClickListener{
         binding.fragmentTopHeader.headerExtendBack.setOnClickListener(this)
         binding.detailStar.setOnClickListener(this)
         article = arguments?.getSerializable("data") as Article
-        initView(article)
+        val save= arguments?.getBoolean("save")
+        initView(article,save?:true)
 
 
         return binding.root
     }
-    private fun initView(data: Article){
+    private fun initView(data: Article,save:Boolean){
         binding.apply {
             Glide.with(requireContext()).load(data.urlToImage).into(binding.detailImage)
             detailTitle.text = data.title
             detailContent.text = data.content
             detailAuthor.text= data.author
-            val hour = data.publishedAt.substring(11 until 13).toInt()
-            val tmp = System.currentTimeMillis()
-            val formatter = SimpleDateFormat("HH")
-            val parseData=formatter.format(tmp).toInt()
-            detailTime.text = "${parseData - hour} hours ago"
+            if (save){
+                detailTime.text = "${data.publishedAt}"
+
+            }else{
+                val hour = data.publishedAt.substring(11 until 13).toInt()
+                val tmp = System.currentTimeMillis()
+                val formatter = SimpleDateFormat("HH")
+                val parseData=formatter.format(tmp).toInt()
+                detailTime.text = "${parseData - hour} hours ago"
+
+            }
+
 
             if (data.title.length>35){
                 val tmp ="${data.title.substring(0,35)}..."
