@@ -1,6 +1,7 @@
 package kr.ac.kpu.ce2017154024.newsappwithwanted.hilt
 
 import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Articles
+import kr.ac.kpu.ce2017154024.newsappwithwanted.data.NewsResponse
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,7 +15,8 @@ import retrofit2.http.Query
 interface retrofitInterface {
 //kr
     @GET("top-headlines?country=us")
-    fun requestTopHeadline(): Call<Articles>
+    suspend fun requestTopHeadline(@Query("page") page: Int = 1,
+                           @Query("pageSize") pageSize: Int = 20): NewsResponse
     @GET("top-headlines?country=us")
     fun requestTopHeadlineCategory(@Query("category") category:String): Call<Articles>
 

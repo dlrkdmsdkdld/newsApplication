@@ -2,7 +2,13 @@ package kr.ac.kpu.ce2017154024.newsappwithwanted.data
 
 import java.io.Serializable
 
-
+data class NewsResponse(
+    val status: String,
+    val totalResults: Int?,
+    val articles: List<Article>?,
+    val code: String?,
+    val message: String?
+):Serializable
 
 class Articles(val articles:List<Article>){
 
