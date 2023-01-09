@@ -1,13 +1,14 @@
 package kr.ac.kpu.ce2017154024.newsappwithwanted.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
 import kr.ac.kpu.ce2017154024.newsappwithwanted.repository.TopNewsRepository
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
@@ -28,13 +29,27 @@ class TopNewsViewmodel @Inject constructor(private val repository: TopNewsReposi
         data?.let {  selectarticle.value =it}
     }
 
+    val articlePagingLiveData=repository.getNewsList().asLiveData().cachedIn(viewModelScope)
+    // top news
+//    private var _topNewsList: MutableLiveData<PagingData<Article>> =
+//        MutableLiveData(PagingData.empty())
+//    val topNewsList: LiveData<PagingData<Article>>
+//        get() = _topNewsList
+//
+//    fun getTopnewsPaging(){
+//        viewModelScope.launch {
+//            val data = repository.getNewsList().asLiveData().cachedIn(viewModelScope)
+//            _topNewsList.value = data.value
+//        }
+//    }
+
     init {
-        viewModelScope.launch {
-             repository.gettag()?.let {
-                setarticles(it)
-                Log.d(TAG,"받아옴")
-            }
-        }
+//        viewModelScope.launch {
+//             repository.gettag()?.let {
+//                setarticles(it)
+//                Log.d(TAG,"받아옴")
+//            }
+//        }
     }
 
 

@@ -1,16 +1,29 @@
 package kr.ac.kpu.ce2017154024.newsappwithwanted.repository
 
 import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
 import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
 import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Articles
 import kr.ac.kpu.ce2017154024.newsappwithwanted.hilt.retrofitInterface
+import kr.ac.kpu.ce2017154024.newsappwithwanted.paging.PagingSource
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 
 class TopNewsRepository @Inject constructor(private val apimodule: retrofitInterface) {
+
+     fun getNewsList(): Flow<PagingData<Article>> {
+        return Pager(PagingConfig(pageSize = 10)){
+            PagingSource(apimodule)
+        }.flow
+    }
+
     suspend fun gettag(): List<Article>? {
         //val res = CompletableDeferred<List<Article>?>()
         val data = apimodule.requestTopHeadline().articles
