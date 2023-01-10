@@ -24,6 +24,7 @@ class PagingAdapter(RecylcerInterface: ITopRecyclerView,isdb:Boolean) :
 ) {
     val RecylcerInterface = RecylcerInterface
     val isdb = isdb
+
     override fun onBindViewHolder(holder: TopRecyclerViewHolder, position: Int) {
         val item = getItem(position)
         item?.let {
@@ -35,5 +36,14 @@ class PagingAdapter(RecylcerInterface: ITopRecyclerView,isdb:Boolean) :
             LayoutInflater.from(parent.context).inflate(R.layout.item_topheadline,parent,false)
             ,this.RecylcerInterface)
     }
+//    val contentsType = 1
+//    val loadStateType = 2
+//    override fun getItemViewType(position: Int): Int {
+//        return if (position == itemCount) {
+//            contentsType
+//        } else {
+//            loadStateType
+//        }
+//    }
 
 }
