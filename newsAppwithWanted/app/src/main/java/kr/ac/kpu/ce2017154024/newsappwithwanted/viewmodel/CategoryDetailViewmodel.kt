@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import kr.ac.kpu.ce2017154024.newsappwithwanted.data.Article
 import kr.ac.kpu.ce2017154024.newsappwithwanted.repository.TopNewsRepository
 import kr.ac.kpu.ce2017154024.newsappwithwanted.util
+import kr.ac.kpu.ce2017154024.newsappwithwanted.util.TAG
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,17 +23,13 @@ class CategoryDetailViewmodel @Inject constructor(private val repository: TopNew
     fun setarticles(data:List<Article>?){
         data?.let {  articles.value =it}
     }
-    private val selectarticle = MutableLiveData<Article>()
-    val getselectarticle : LiveData<Article>
-        get() = selectarticle
-    fun setselectarticle(data: Article?){
-        data?.let {  selectarticle.value =it}
-    }
+
     private val category = MutableLiveData<String>()
     val getcategory: LiveData<String>
         get() = category
     fun setcategory(data: String?){
         data?.let {  category.value =it
+            Log.d(TAG, "  주제 : ${category.value}")
             getarticles(it)
         }
     }

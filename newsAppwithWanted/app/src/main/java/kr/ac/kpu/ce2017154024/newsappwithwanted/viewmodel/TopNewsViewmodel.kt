@@ -16,18 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TopNewsViewmodel @Inject constructor(private val repository: TopNewsRepository) :ViewModel() {
-    private val articles = MutableLiveData<List<Article>>()
-    val getarticles : LiveData<List<Article>>
-        get() = articles
-    fun setarticles(data:List<Article>?){
-        data?.let {  articles.value =it}
-    }
-    private val selectarticle = MutableLiveData<Article>()
-    val getselectarticle : LiveData<Article>
-        get() = selectarticle
-    fun setselectarticle(data: Article?){
-        data?.let {  selectarticle.value =it}
-    }
+
 
     val articlePagingLiveData=repository.getNewsList().asLiveData().cachedIn(viewModelScope)
     // top news

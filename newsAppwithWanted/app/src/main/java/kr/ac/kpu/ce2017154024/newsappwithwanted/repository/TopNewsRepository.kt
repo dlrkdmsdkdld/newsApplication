@@ -24,37 +24,22 @@ class TopNewsRepository @Inject constructor(private val apimodule: retrofitInter
         }.flow
     }
 
-    suspend fun gettag(): List<Article>? {
-        //val res = CompletableDeferred<List<Article>?>()
-        val data = apimodule.requestTopHeadline().articles
-//        apimodule.requestTopHeadline().enqueue(object : retrofit2.Callback<Articles> {
-//            override fun onFailure(call: Call<Articles>, t: Throwable) {
-//                Log.d(TAG,"실패")
-//                res.complete(null)
-//
-//            }
-//
-//            override fun onResponse(call: Call<Articles>, response: Response<Articles>) {
-//                response.body()?.let {
-//                    Log.d(TAG,"it - > ${it.articles}")
-//                    res.complete(it.articles)
-//                    Log.d(TAG,"성공")
-//
-//                }
-//            }
-//
-//        })
+
+     suspend fun getCategoryAriticle(category:String):List<Article>?{
+        val data = apimodule.requestTopHeadlineCategory(category).articles
 
         return data
-        //return null
     }
-    suspend fun getCategoryAriticle(category:String):List<Article>?{
+/*
+    suspend fun gettag(): List<Article>? {
         val res = CompletableDeferred<List<Article>?>()
-        apimodule.requestTopHeadlineCategory(category).enqueue(object :retrofit2.Callback<Articles>{
+        apimodule.requestTopHeadline().enqueue(object : retrofit2.Callback<Articles> {
             override fun onFailure(call: Call<Articles>, t: Throwable) {
                 Log.d(TAG,"실패")
                 res.complete(null)
+
             }
+
             override fun onResponse(call: Call<Articles>, response: Response<Articles>) {
                 response.body()?.let {
                     Log.d(TAG,"it - > ${it.articles}")
@@ -63,7 +48,11 @@ class TopNewsRepository @Inject constructor(private val apimodule: retrofitInter
 
                 }
             }
+
         })
-        return res.await()
+
+        return data
+        //return null
     }
+*/
 }

@@ -18,7 +18,7 @@ interface retrofitInterface {
     suspend fun requestTopHeadline(@Query("page") page: Int = 1,
                            @Query("pageSize") pageSize: Int = 10): NewsResponse
     @GET("top-headlines?country=us")
-    fun requestTopHeadlineCategory(@Query("category") category:String): Call<Articles>
+    suspend fun requestTopHeadlineCategory(@Query("category") category:String): NewsResponse
 
     companion object {
             private const val BASE_URL =
